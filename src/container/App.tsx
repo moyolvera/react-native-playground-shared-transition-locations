@@ -1,14 +1,19 @@
 import React from 'react';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Feather';
+import { NavigationContainer } from '@react-navigation/native';
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
+import One from '../features/One/One';
+import OneDetail from '../features/One/OneDetail';
+
+const Stack = createSharedElementStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        <Icon name="activity" />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="One" component={One} />
+        <Stack.Screen name="OneDetail" component={OneDetail} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
