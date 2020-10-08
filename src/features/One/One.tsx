@@ -1,5 +1,7 @@
 import React from 'react';
 import { SafeAreaView, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { SharedElement } from 'react-navigation-shared-element';
 import IconOne from './components/IconOne';
 import ONE_DATA from '../../assets/OneData';
 import MarketingSlider from './components/MarketingSlider';
@@ -7,6 +9,8 @@ import { SPACING } from '../../constants';
 import CommonStyles from '../../theme/CommonStyles';
 
 function One() {
+  const { navigate } = useNavigation();
+
   return (
     <SafeAreaView style={CommonStyles.flexOne}>
       <MarketingSlider />
@@ -20,8 +24,15 @@ function One() {
         }}>
         {ONE_DATA.map((item) => {
           return (
-            <TouchableOpacity key={item.id} style={{ padding: SPACING }} onPress={() => {}}>
-              <IconOne uri={item.imageUri} />
+            <TouchableOpacity
+              key={item.id}
+              style={{ padding: SPACING }}
+              onPress={() => {
+                navigate('OneDetail', { item });
+              }}>
+              <SharedElement id={`item.${item.id}.icon`}>
+                <IconOne uri={item.imageUri} />
+              </SharedElement>
             </TouchableOpacity>
           );
         })}

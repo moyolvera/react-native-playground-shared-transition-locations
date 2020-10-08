@@ -1,4 +1,6 @@
-const ONE_DATA = [
+import { OneDataList } from '../declarations/types.td';
+
+const ONE_DATA: OneDataList = [
   {
     imageUri: 'https://image.flaticon.com/icons/png/128/2990/2990502.png',
     title: 'Ukelele',
