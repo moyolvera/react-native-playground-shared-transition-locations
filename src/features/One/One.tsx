@@ -5,8 +5,8 @@ import { SharedElement } from 'react-navigation-shared-element';
 import IconOne from './components/IconOne';
 import ONE_DATA from '../../assets/OneData';
 import MarketingSlider from './components/MarketingSlider';
-import { SPACING } from '../../constants';
 import CommonStyles from '../../theme/CommonStyles';
+import styles from './One.styles';
 
 function One() {
   const { navigate } = useNavigation();
@@ -14,19 +14,12 @@ function One() {
   return (
     <SafeAreaView style={CommonStyles.flexOne}>
       <MarketingSlider />
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          alignItems: 'center',
-          justifyContent: 'center',
-          // marginTop: DIMENSIONS.HEIGHT * 0.4,
-        }}>
+      <View style={styles.listWrapper}>
         {ONE_DATA.map((item) => {
           return (
             <TouchableOpacity
               key={item.id}
-              style={{ padding: SPACING }}
+              style={styles.item}
               onPress={() => {
                 navigate('OneDetail', { item });
               }}>

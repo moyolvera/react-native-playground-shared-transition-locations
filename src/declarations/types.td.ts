@@ -1,4 +1,5 @@
 export type StackParams = {
+  Home: undefined;
   One: undefined;
   OneDetail: {
     item: OneDataItem;
