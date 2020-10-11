@@ -4,6 +4,10 @@ export type StackParams = {
   OneDetail: {
     item: OneDataItem;
   };
+  Two: undefined;
+  TwoDetail: {
+    item: TwoDataItem;
+  };
 };
 
 export type Location = {
@@ -23,3 +27,7 @@ export type OneDataItem = {
 };
 
 export type OneDataList = OneDataItem[];
+
+export type TwoDataItem = { key: string; location: string; numberOfDays: number; image: string; color: string };
+
+export type TwoDataList = TwoDataItem[];

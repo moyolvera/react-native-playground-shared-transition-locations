@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
-import { Home, One, OneDetail } from '../features';
+import { Home, One, OneDetail, Two, TwoDetail } from '../features';
 import { Easing, StatusBar } from 'react-native';
 import { StackParams } from '../declarations/types.td';
 
@@ -18,6 +18,25 @@ const App = () => {
         <Stack.Screen
           name="OneDetail"
           component={OneDetail}
+          options={() => ({
+            gestureEnabled: false,
+            transitionSpec: {
+              open: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
+              close: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
+            },
+            cardStyleInterpolator: ({ current: { progress } }) => {
+              return {
+                cardStyle: {
+                  opacity: progress,
+                },
+              };
+            },
+          })}
+        />
+        <Stack.Screen name="Two" component={Two} />
+        <Stack.Screen
+          name="TwoDetail"
+          component={TwoDetail}
           options={() => ({
             gestureEnabled: false,
             transitionSpec: {

@@ -12,6 +12,9 @@ function Home() {
       case 0:
         navigate('One');
         break;
+      case 1:
+        navigate('Two');
+        break;
       default:
         Alert.alert('Wow', 'Looks like that feature is not implemented yet. :D');
         break;
