@@ -15,6 +15,9 @@ function Home() {
       case 1:
         navigate('Two');
         break;
+      case 2:
+        navigate('Three');
+        break;
       default:
         Alert.alert('Wow', 'Looks like that feature is not implemented yet. :D');
         break;
@@ -32,6 +35,7 @@ function Home() {
           <View style={styles.itemWrapper}>
             {[...Array(10).keys()].map((item) => (
               <TouchableOpacity
+                key={item}
                 onPress={() => {
                   navigateToRoute(item);
                 }}

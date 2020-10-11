@@ -6,13 +6,15 @@ import CommonStyles from '../../theme/CommonStyles';
 import TWO_DATA_LIST from '../../assets/TwoData';
 import styles from './Two.styles';
 import { FULL_SIZE, ITEM_WIDTH } from '../../constants';
+import { BackIcon } from '../../components';
 
 function Two() {
-  const { navigate } = useNavigation();
+  const { navigate, goBack } = useNavigation();
   const scrollX = useRef(new Animated.Value(0)).current;
 
   return (
     <SafeAreaView style={CommonStyles.flexOne}>
+      <BackIcon onPress={goBack} />
       <Animated.FlatList
         data={TWO_DATA_LIST}
         keyExtractor={(item) => item.key}

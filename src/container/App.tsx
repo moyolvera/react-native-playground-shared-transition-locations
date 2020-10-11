@@ -1,9 +1,10 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
-import { Home, One, OneDetail, Two, TwoDetail } from '../features';
-import { Easing, StatusBar } from 'react-native';
+import { Home, One, OneDetail, Two, TwoDetail, Three, ThreeDetail } from '../features';
 import { StackParams } from '../declarations/types.td';
+import { transitionSpec, cardStyleInterpolator } from './NavigationConfig';
 
 const Stack = createSharedElementStackNavigator<StackParams>();
 
@@ -20,17 +21,8 @@ const App = () => {
           component={OneDetail}
           options={() => ({
             gestureEnabled: false,
-            transitionSpec: {
-              open: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
-              close: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
-            },
-            cardStyleInterpolator: ({ current: { progress } }) => {
-              return {
-                cardStyle: {
-                  opacity: progress,
-                },
-              };
-            },
+            transitionSpec,
+            cardStyleInterpolator,
           })}
         />
         <Stack.Screen name="Two" component={Two} />
@@ -39,17 +31,18 @@ const App = () => {
           component={TwoDetail}
           options={() => ({
             gestureEnabled: false,
-            transitionSpec: {
-              open: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
-              close: { animation: 'timing', config: { duration: 500, easing: Easing.inOut(Easing.ease) } },
-            },
-            cardStyleInterpolator: ({ current: { progress } }) => {
-              return {
-                cardStyle: {
-                  opacity: progress,
-                },
-              };
-            },
+            transitionSpec,
+            cardStyleInterpolator,
+          })}
+        />
+        <Stack.Screen name="Three" component={Three} />
+        <Stack.Screen
+          name="ThreeDetail"
+          component={ThreeDetail}
+          options={() => ({
+            gestureEnabled: false,
+            transitionSpec,
+            cardStyleInterpolator,
           })}
         />
       </Stack.Navigator>
