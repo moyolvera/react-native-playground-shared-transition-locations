@@ -5,7 +5,6 @@ import { SharedElement } from 'react-navigation-shared-element';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import { BackIcon } from '../../components';
-import { DIMENSIONS, SPACING } from '../../constants';
 import { StackParams } from '../../declarations/types.td';
 import styles from './Three.styles';
 import Avatars from './components/Avatars';
@@ -26,19 +25,13 @@ function ThreeDetail() {
   >;
 
   return (
-    <View style={[{ flex: 1, backgroundColor: '#000' }]}>
+    <View style={[styles.container]}>
       <Animatable.View
         ref={topRef}
         animation="fadeIn"
         duration={800}
         delay={600}
-        style={[
-          StyleSheet.absoluteFillObject,
-          {
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            zIndex: 2,
-          },
-        ]}>
+        style={[StyleSheet.absoluteFillObject, styles.topAnimatable]}>
         <BackIcon
           onPress={() => {
             Promise.all([bottomRef.current.fadeOut(200), topRef.current.fadeOut(200)]).finally(() => {
@@ -46,40 +39,22 @@ function ThreeDetail() {
             });
           }}
           color="#fff"
-          buttonStyles={{ top: SPACING * 4, left: SPACING }}
+          buttonStyles={styles.backButton}
         />
-        <LinearGradient
-          colors={['transparent', '#000', '#000']}
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: DIMENSIONS.HEIGHT / 2,
-          }}
-        />
+        <LinearGradient colors={['transparent', '#000', '#000']} style={styles.linearGradient} />
       </Animatable.View>
       <SharedElement id={`item.${item.key}.image`} style={styles.detailImage}>
         <Image source={{ uri: item.image }} style={styles.detailImage} />
       </SharedElement>
-      <View style={{ flex: 1, position: 'absolute', bottom: 70, justifyContent: 'flex-end', zIndex: 3 }}>
-        <View style={{ paddingHorizontal: 20, alignItems: 'flex-start' }}>
+      <View style={styles.bottomWrapper}>
+        <View style={styles.textWrapper}>
           <SharedElement id={`item.${item.key}.name`}>
             <Text style={styles.name} numberOfLines={1} adjustsFontSizeToFit>
               {item.name}
             </Text>
           </SharedElement>
         </View>
-        <Animatable.View
-          ref={bottomRef}
-          animation="fadeIn"
-          duration={800}
-          delay={700}
-          style={{
-            width: DIMENSIONS.WIDTH,
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-          }}>
+        <Animatable.View ref={bottomRef} animation="fadeIn" duration={800} delay={700} style={styles.bottomAnimatable}>
           <Avatars />
           <ThreeInfo title="Distance" type="km" number={Math.floor(Math.random() * 40) + 20} />
           <ThreeInfo title="Height" type="m" number={Math.floor(Math.random() * 2200) + 1000} />

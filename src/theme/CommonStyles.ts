@@ -10,6 +10,7 @@ const CommonStyles = StyleSheet.create({
   flexOne: {
     flex: 1,
   },
+  blackBackground: { backgroundColor: '#000' },
 });
 
 export default CommonStyles;

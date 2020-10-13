@@ -25,7 +25,7 @@ function Three() {
   }, []);
 
   return (
-    <SafeAreaView style={[CommonStyles.flexOne, { backgroundColor: '#000' }]}>
+    <SafeAreaView style={[CommonStyles.flexOne, CommonStyles.blackBackground]}>
       <BackIcon onPress={goBack} color="#fff" />
       <FlingGestureHandler
         key="UP"
@@ -53,7 +53,7 @@ function Three() {
             data={THREE_DATA}
             keyExtractor={(item) => item.key}
             scrollEnabled={false}
-            contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+            contentContainerStyle={styles.containerFlatlist}
             CellRendererComponent={({ index, item, children, style, ...props }) => {
               const newStyle = [
                 styles,
@@ -85,7 +85,7 @@ function Three() {
                     <SharedElement id={`item.${item.key}.image`} style={styles.image}>
                       <Image source={{ uri: item.image }} style={styles.image} />
                     </SharedElement>
-                    <View style={{ position: 'absolute', bottom: 20, left: 20 }}>
+                    <View style={styles.textViewWrapper}>
                       <SharedElement id={`item.${item.key}.name`}>
                         <Text style={styles.name} numberOfLines={1} adjustsFontSizeToFit>
                           {item.name}
