@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
     color: '#999',
   },
   itemWrapper: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 150 },
-  subtitle: { fontWeight: '800', textTransform: 'uppercase', fontSize: 40, top: -10 },
-  title: { fontWeight: '900', textTransform: 'uppercase', fontSize: 25, letterSpacing: -1 },
+  subtitle: { fontWeight: '800', textTransform: 'uppercase', fontSize: 40 },
+  title: { fontWeight: '900', textTransform: 'uppercase', fontSize: 25, letterSpacing: -1, top: 10 },
+  playground: { fontWeight: '900', textTransform: 'uppercase', fontSize: 25, letterSpacing: -1, top: -10 },
   titleWrapper: { marginHorizontal: 10, marginTop: 30, marginBottom: 10 },
   wrapper: { marginHorizontal: 10 },
 });

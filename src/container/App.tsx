@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
-import { Home, One, OneDetail, Two, TwoDetail, Three, ThreeDetail } from '../features';
+import { Four, FourDetail, Home, One, OneDetail, Two, TwoDetail, Three, ThreeDetail, Playground } from '../features';
 import { StackParams } from '../declarations/types.td';
 import { transitionSpec, cardStyleInterpolator } from './NavigationConfig';
 
@@ -45,6 +45,17 @@ const App = () => {
             cardStyleInterpolator,
           })}
         />
+        <Stack.Screen name="Four" component={Four} />
+        <Stack.Screen
+          name="FourDetail"
+          component={FourDetail}
+          options={() => ({
+            gestureEnabled: false,
+            transitionSpec,
+            cardStyleInterpolator,
+          })}
+        />
+        <Stack.Screen name="Playground" component={Playground} />
       </Stack.Navigator>
     </NavigationContainer>
   );

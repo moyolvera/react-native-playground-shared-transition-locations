@@ -1,4 +1,8 @@
 export type StackParams = {
+  Four: undefined;
+  FourDetail: {
+    item: FourDataItem;
+  };
   Home: undefined;
   One: undefined;
   OneDetail: {
@@ -12,6 +16,7 @@ export type StackParams = {
   ThreeDetail: {
     item: ThreeDataItem;
   };
+  Playground: undefined;
 };
 
 export type Location = {
@@ -43,3 +48,28 @@ export type ThreeDataItem = {
 };
 
 export type ThreeDataList = ThreeDataItem[];
+
+export type FourUserDetailItem = {
+  label: string;
+  value: number;
+};
+
+export type FourUserDetailList = FourUserDetailItem[];
+
+export type FourUserItem = {
+  name: string;
+  avatar: string;
+  job: string;
+  details: FourUserDetailList;
+};
+
+export type FourDataItem = {
+  key: string;
+  title: string;
+  description: string;
+  location: string;
+  image: string;
+  user: FourUserItem;
+};
+
+export type FourDataList = FourDataItem[];
